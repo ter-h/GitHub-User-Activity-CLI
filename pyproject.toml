@@ -1,0 +1,10 @@
+[project]
+name = "github-activity"
+version = "0.1.0"
+description = "CLI tool to show recent GitHub user activity"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["requests"]
+
+[project.scripts]
+github-activity = "github_activity.github_events:main"

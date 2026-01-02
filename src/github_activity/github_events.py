@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import requests
 import sys
-from pprint import pprint
+import argparse
 
 def get_push_commit_count(repo_name, before, head):
     """Return the number of commits in a push using the compare API."""
@@ -60,8 +60,11 @@ def get_events(username):
     else:
         print("Error:", response.status_code, response.text)
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        get_events(sys.argv[1])
-    else:
-        print("Please provide a GitHub username as a command line argument.")
+
+def main():
+
+    parser = argparse.ArgumentParser(description="GitHub activity CLI")
+    parser.add_argument("username")
+    args = parser.parse_args()
+
+    get_events(args.username)
